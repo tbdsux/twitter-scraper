@@ -46,22 +46,15 @@ func (s *Scraper) UploadMedia(filePath string) (*Media, error) {
 		return nil, err
 	}
 
-	fmt.Println("0")
-
-
 	media, err := s.uploadInit(filePath, fileContent)
 	if err != nil {
 		return nil, err
 	}
 
-	fmt.Println("1")
-
 	err = s.uploadAppend(media, fileContent)
 	if err != nil {
 		return nil, err
 	}
-
-	fmt.Println("2")
 
 	var status *ProcessingInfo
 
@@ -69,8 +62,6 @@ func (s *Scraper) UploadMedia(filePath string) (*Media, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	fmt.Println("3")
 
 	if strings.HasPrefix(media.Type, "image") {
 		return media, nil
@@ -83,8 +74,6 @@ func (s *Scraper) UploadMedia(filePath string) (*Media, error) {
 			return nil, err
 		}
 	}
-
-	fmt.Println("4")
 
 	return media, nil
 }
@@ -183,8 +172,6 @@ func (s *Scraper) uploadAppend(media *Media, fileContent []byte) error {
 		req.Header.Set("Origin", "https://x.com")
 		req.Header.Set("Referer", "https://x.com/")
 		req.Body = io.NopCloser(&buf)
-
-		fmt.Println()
 
 		err = s.RequestAPI(req, nil)
 		if err != nil {
