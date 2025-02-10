@@ -11,7 +11,7 @@ func (s *Scraper) GetSpace(id string) (*Space, error) {
 		return nil, errors.New("scraper is not logged in")
 	}
 
-	req, err := s.newRequest("GET", "https://twitter.com/i/api/graphql/d03OdorPdZ_sH9V3D1_yWQ/AudioSpaceById")
+	req, err := s.newRequest("GET", "https://x.com/i/api/graphql/d03OdorPdZ_sH9V3D1_yWQ/AudioSpaceById")
 	if err != nil {
 		return nil, err
 	}

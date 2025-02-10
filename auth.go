@@ -19,9 +19,9 @@ import (
 )
 
 const (
-	loginURL  = "https://api.twitter.com/1.1/onboarding/task.json"
-	logoutURL = "https://api.twitter.com/1.1/account/logout.json"
-	oAuthURL  = "https://api.twitter.com/oauth2/token"
+	loginURL  = "https://api.x.com/1.1/onboarding/task.json"
+	logoutURL = "https://api.x.com/1.1/account/logout.json"
+	oAuthURL  = "https://api.x.com/oauth2/token"
 	// Doesn't require x-client-transaction-id header in auth. x-rate-limit-limit: 2000
 	bearerToken1 = "AAAAAAAAAAAAAAAAAAAAAFQODgEAAAAAVHTp76lzh3rFzcHbmHVvQxYYpTw%3DckAlMINMjmCwxUcaXbAN4XqJVdgMJaHqNOFgPMK0zN1qLqLQCF"
 	// Requires x-client-transaction-id header in auth.
@@ -151,7 +151,7 @@ func (s *Scraper) getFlowToken(data map[string]interface{}) (string, error) {
 func (s *Scraper) IsLoggedIn() bool {
 	s.isLogged = true
 	s.setBearerToken(bearerToken1)
-	req, err := http.NewRequest("GET", "https://api.twitter.com/1.1/account/verify_credentials.json", nil)
+	req, err := http.NewRequest("GET", "https://api.x.com/1.1/account/verify_credentials.json", nil)
 	if err != nil {
 		return false
 	}
@@ -443,7 +443,7 @@ func (s *Scraper) SetAuthToken(token AuthToken) {
 		Name:       "auth_token",
 		Value:      token.Token,
 		Path:       "",
-		Domain:     "twitter.com",
+		Domain:     "x.com",
 		Expires:    expires,
 		RawExpires: "",
 		MaxAge:     0,
@@ -456,7 +456,7 @@ func (s *Scraper) SetAuthToken(token AuthToken) {
 		Name:       "ct0",
 		Value:      token.CSRFToken,
 		Path:       "",
-		Domain:     "twitter.com",
+		Domain:     "x.com",
 		Expires:    expires,
 		RawExpires: "",
 		MaxAge:     0,

@@ -16,7 +16,7 @@ var (
 	reHashtag    = regexp.MustCompile(`\B(\#\S+\b)`)
 	reTwitterURL = regexp.MustCompile(`https:(\/\/t\.co\/([A-Za-z0-9]|[A-Za-z]){10})`)
 	reUsername   = regexp.MustCompile(`\B(\@\S{1,15}\b)`)
-	twURL        = urlParse("https://twitter.com")
+	twURL        = urlParse("https://x.com")
 )
 
 func (s *Scraper) newRequest(method string, url string) (*http.Request, error) {
@@ -165,7 +165,7 @@ func parseLegacyTweet(user *legacyUser, tweet *legacyTweet) *Tweet {
 		ID:             tweetID,
 		Likes:          tweet.FavoriteCount,
 		Name:           name,
-		PermanentURL:   fmt.Sprintf("https://twitter.com/%s/status/%s", username, tweetID),
+		PermanentURL:   fmt.Sprintf("https://x.com/%s/status/%s", username, tweetID),
 		Replies:        tweet.ReplyCount,
 		Retweets:       tweet.RetweetCount,
 		Text:           text,
@@ -293,13 +293,13 @@ func parseLegacyTweet(user *legacyUser, tweet *legacyTweet) *Tweet {
 
 	tw.HTML = tweet.FullText
 	tw.HTML = reHashtag.ReplaceAllStringFunc(tw.HTML, func(hashtag string) string {
-		return fmt.Sprintf(`<a href="https://twitter.com/hashtag/%s">%s</a>`,
+		return fmt.Sprintf(`<a href="https://x.com/hashtag/%s">%s</a>`,
 			strings.TrimPrefix(hashtag, "#"),
 			hashtag,
 		)
 	})
 	tw.HTML = reUsername.ReplaceAllStringFunc(tw.HTML, func(username string) string {
-		return fmt.Sprintf(`<a href="https://twitter.com/%s">%s</a>`,
+		return fmt.Sprintf(`<a href="https://x.com/%s">%s</a>`,
 			strings.TrimPrefix(username, "@"),
 			username,
 		)
@@ -360,7 +360,7 @@ func parseProfile(user legacyUser) Profile {
 		Name:                 user.Name,
 		PinnedTweetIDs:       user.PinnedTweetIdsStr,
 		TweetsCount:          user.StatusesCount,
-		URL:                  "https://twitter.com/" + user.ScreenName,
+		URL:                  "https://x.com/" + user.ScreenName,
 		UserID:               user.IDStr,
 		Username:             user.ScreenName,
 		FollowedBy:           user.FollowedBy,
@@ -415,7 +415,7 @@ func parseProfileV2(user userResult) Profile {
 		Name:               u.Name,
 		PinnedTweetIDs:     u.PinnedTweetIdsStr,
 		TweetsCount:        u.StatusesCount,
-		URL:                "https://twitter.com/" + u.ScreenName,
+		URL:                "https://x.com/" + u.ScreenName,
 		UserID:             user.ID,
 		Username:           u.ScreenName,
 		Sensitive:          u.PossiblySensitive,

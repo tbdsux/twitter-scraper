@@ -21,7 +21,7 @@ func (s *Scraper) FetchFollowingByUserID(userID string, maxUsersNbr int, cursor 
 		maxUsersNbr = 200
 	}
 
-	req, err := s.newRequest("GET", "https://twitter.com/i/api/graphql/g5P4cbXR4ta4oCeE7y2vLQ/Following")
+	req, err := s.newRequest("GET", "https://x.com/i/api/graphql/g5P4cbXR4ta4oCeE7y2vLQ/Following")
 	if err != nil {
 		return nil, "", err
 	}
@@ -94,7 +94,7 @@ func (s *Scraper) FetchFollowersByUserID(userID string, maxUsersNbr int, cursor 
 		maxUsersNbr = 200
 	}
 
-	req, err := s.newRequest("GET", "https://twitter.com/i/api/graphql/jwbfbSzn0FRL_AMZGsYDag/Followers")
+	req, err := s.newRequest("GET", "https://x.com/i/api/graphql/jwbfbSzn0FRL_AMZGsYDag/Followers")
 	if err != nil {
 		return nil, "", err
 	}

@@ -129,7 +129,7 @@ func (timeline *scheduleTweets) parseTweets() []*ScheduledTweet {
 
 // FetchScheduledTweets gets scheduled tweets via the Twitter frontend GraphQL API.
 func (s *Scraper) FetchScheduledTweets() ([]*ScheduledTweet, error) {
-	req, err := s.newRequest("GET", "https://twitter.com/i/api/graphql/ITtjAzvlZni2wWXwf295Qg/FetchScheduledTweets")
+	req, err := s.newRequest("GET", "https://x.com/i/api/graphql/ITtjAzvlZni2wWXwf295Qg/FetchScheduledTweets")
 	if err != nil {
 		return nil, err
 	}
@@ -154,7 +154,7 @@ func (s *Scraper) FetchScheduledTweets() ([]*ScheduledTweet, error) {
 
 // DeleteScheduledTweet removes tweet from scheduled.
 func (s *Scraper) DeleteScheduledTweet(id string) error {
-	req, err := s.newRequest("POST", "https://twitter.com/i/api/graphql/CTOVqej0JBXAZSwkp1US0g/DeleteScheduledTweet")
+	req, err := s.newRequest("POST", "https://x.com/i/api/graphql/CTOVqej0JBXAZSwkp1US0g/DeleteScheduledTweet")
 	if err != nil {
 		return err
 	}
@@ -197,7 +197,7 @@ func (s *Scraper) CreateScheduledTweet(schedule TweetSchedule) (string, error) {
 		return "", errors.New("date can't be in past")
 	}
 
-	req, err := s.newRequest("POST", "https://twitter.com/i/api/graphql/LCVzRQGxOaGnOnYH01NQXg/CreateScheduledTweet")
+	req, err := s.newRequest("POST", "https://x.com/i/api/graphql/LCVzRQGxOaGnOnYH01NQXg/CreateScheduledTweet")
 	if err != nil {
 		return "", err
 	}
