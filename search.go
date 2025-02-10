@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-const searchURL = "https://twitter.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline"
+const searchURL = "https://x.com/i/api/graphql/nK1dw4oV3k4w5TdtcAdSww/SearchTimeline"
 
 type searchTimeline struct {
 	Data struct {

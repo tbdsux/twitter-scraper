@@ -420,7 +420,7 @@ scraper.SetSearchMode(twitterscraper.SearchLatest)
 
 #### Search params
 
-See [Rules and filtering](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators) for build standard queries.
+See [Rules and filtering](https://developer.x.com/en/docs/tweets/rules-and-filtering/overview/standard-operators) for build standard queries.
 
 ### Get profile
 
@@ -514,10 +514,10 @@ if err != nil {
 }
 
 var spaceId string
-spaceUrl := tweet.URLs[0] // https://twitter.com/i/spaces/1mnxeAMPEqqxX
+spaceUrl := tweet.URLs[0] // https://x.com/i/spaces/1mnxeAMPEqqxX
 
-if strings.HasPrefix(spaceUrl, "https://twitter.com/i/spaces/") {
-    spaceId = strings.Replace(spaceUrl, "https://twitter.com/i/spaces/", "", 1) // 1mnxeAMPEqqxX
+if strings.HasPrefix(spaceUrl, "https://x.com/i/spaces/") {
+    spaceId = strings.Replace(spaceUrl, "https://x.com/i/spaces/", "", 1) // 1mnxeAMPEqqxX
 }
 
 space, err := scraper.GetSpace(spaceId)
@@ -655,6 +655,7 @@ media, err := scraper.UploadMedia("./files/movie.mp4")
 ```
 
 ### Account
+
 > Requires authentication!
 
 To get current account settings use `GetAccountSettings` method.
@@ -674,7 +675,7 @@ accounts, err := scraper.GetAccountList()
 ### User-Agent
 
 By default client uses user agent from mac google chrome v129.
- 
+
 ```
 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
 ```

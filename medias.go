@@ -26,7 +26,7 @@ func (s *Scraper) FetchMediaTweetsByUserID(userID string, maxTweetsNbr int, curs
 		maxTweetsNbr = 200
 	}
 
-	req, err := s.newRequest("GET", "https://twitter.com/i/api/graphql/2tLOJWwGuCTytDrGBg8VwQ/UserMedia")
+	req, err := s.newRequest("GET", "https://x.com/i/api/graphql/2tLOJWwGuCTytDrGBg8VwQ/UserMedia")
 	if err != nil {
 		return nil, "", err
 	}

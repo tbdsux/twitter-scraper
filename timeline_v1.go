@@ -92,7 +92,7 @@ func (timeline *timelineV1) parseTweet(id string) *Tweet {
 			ConversationID: tweet.ConversationIDStr,
 			Likes:          tweet.FavoriteCount,
 			Name:           name,
-			PermanentURL:   fmt.Sprintf("https://twitter.com/%s/status/%s", username, id),
+			PermanentURL:   fmt.Sprintf("https://x.com/%s/status/%s", username, id),
 			Replies:        tweet.ReplyCount,
 			Retweets:       tweet.RetweetCount,
 			Text:           tweet.FullText,
@@ -194,13 +194,13 @@ func (timeline *timelineV1) parseTweet(id string) *Tweet {
 
 		tw.HTML = tweet.FullText
 		tw.HTML = reHashtag.ReplaceAllStringFunc(tw.HTML, func(hashtag string) string {
-			return fmt.Sprintf(`<a href="https://twitter.com/hashtag/%s">%s</a>`,
+			return fmt.Sprintf(`<a href="https://x.com/hashtag/%s">%s</a>`,
 				strings.TrimPrefix(hashtag, "#"),
 				hashtag,
 			)
 		})
 		tw.HTML = reUsername.ReplaceAllStringFunc(tw.HTML, func(username string) string {
-			return fmt.Sprintf(`<a href="https://twitter.com/%s">%s</a>`,
+			return fmt.Sprintf(`<a href="https://x.com/%s">%s</a>`,
 				strings.TrimPrefix(username, "@"),
 				username,
 			)
