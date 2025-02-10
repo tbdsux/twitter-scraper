@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"slices"
 	"time"
 )
 
@@ -86,7 +87,9 @@ func (s *Scraper) handleResponse(resp *http.Response, target interface{}) error 
 		return err
 	}
 
-	if resp.StatusCode != http.StatusOK {
+	okResponses := []int{http.StatusOK, http.StatusAccepted, http.StatusNoContent, http.StatusCreated}
+
+	if !slices.Contains(okResponses, resp.StatusCode) {
 		return fmt.Errorf("response status %s: %s", resp.Status, content)
 	}
 
