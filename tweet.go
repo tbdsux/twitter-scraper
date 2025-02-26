@@ -11,14 +11,14 @@ import (
 )
 
 type TweetReply struct {
-	ReplyToTweetId string 
+	ReplyToTweetId      string
 	ExcludeReplyUserIds []string
 }
 
 type NewTweet struct {
 	Text   string
 	Medias []*Media
-	Reply *TweetReply
+	Reply  *TweetReply
 }
 
 type newTweet struct {
@@ -53,7 +53,7 @@ func (newTweet *newTweet) parse() *Tweet {
 }
 
 func (s *Scraper) CreateTweet(tweet NewTweet) (*Tweet, error) {
-	req, err := s.newRequest("POST", "https://x.com/i/api/graphql/oB-5XsHNAbjvARJEc8CZFw/CreateTweet")
+	req, err := s.newRequest("POST", "https://x.com/i/api/graphql/UYy4T67XpYXgWKOafKXB_A/CreateTweet")
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +83,7 @@ func (s *Scraper) CreateTweet(tweet NewTweet) (*Tweet, error) {
 		"tweet_text":              tweet.Text,
 	}
 
-	// If reply is set 
+	// If reply is set
 	if tweet.Reply != nil {
 		reply := map[string]interface{}{}
 
@@ -130,7 +130,7 @@ func (s *Scraper) CreateTweet(tweet NewTweet) (*Tweet, error) {
 	body := map[string]interface{}{
 		"features":  features,
 		"variables": variables,
-		"queryId":   "oB-5XsHNAbjvARJEc8CZFw",
+		"queryId":   "UYy4T67XpYXgWKOafKXB_A",
 	}
 
 	b, _ := json.Marshal(body)
