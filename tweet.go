@@ -11,14 +11,14 @@ import (
 )
 
 type TweetReply struct {
-	ReplyToTweetId string 
+	ReplyToTweetId      string
 	ExcludeReplyUserIds []string
 }
 
 type NewTweet struct {
 	Text   string
 	Medias []*Media
-	Reply *TweetReply
+	Reply  *TweetReply
 }
 
 type newTweet struct {
@@ -83,7 +83,7 @@ func (s *Scraper) CreateTweet(tweet NewTweet) (*Tweet, error) {
 		"tweet_text":              tweet.Text,
 	}
 
-	// If reply is set 
+	// If reply is set
 	if tweet.Reply != nil {
 		reply := map[string]interface{}{}
 
